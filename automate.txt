@@ -1,0 +1,8 @@
+etats = q0,q1,q2;
+alphabet = a,b;
+initial = q0;
+final = q2;
+transitions {
+    q0 -> q1 : a;
+    q1 -> q2 : a,b;
+}
