@@ -31,3 +31,10 @@ The lexer reads a text file describing an automaton, including its **states, alp
 
 ```bash
 gcc lexer.c main_lexer.c -o main_lexer
+```
+
+2. Run the program:
+
+```bash
+./main_lexer
+```
