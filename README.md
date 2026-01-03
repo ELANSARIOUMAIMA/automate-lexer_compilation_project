@@ -57,6 +57,8 @@ The semantic analyzer ensures the logical and formal correctness of the automato
 * `parser.c` — Syntax parser implementation with error detection
 * `automate.h` — Automaton data structure definitions
 * `automate.c` — Automaton creation and manipulation functions
+* `semantic.h` — Header file declaring semantic analysis functions for validating the automaton.
+* `semantic.c` — Implementation of the semantic analyzer with logical consistency checks.
 * `main_parser.c` — Main program to test the complete parser
 
 ---
