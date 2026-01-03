@@ -6,6 +6,7 @@ The compiler is composed of three main phases:
 **Lexical Analysis** – tokenizing the input text,
 **Syntax Analysis** – validating the grammar and structure,
 **Semantic Analysis** – verifying the logical correctness of the automaton.
+
 The goal of the project is to ensure that an automaton described by the user is syntactically correct, semantically valid, and formally consistent.
 
 ---
@@ -32,12 +33,14 @@ The goal of the project is to ensure that an automaton described by the user is 
 ### Semantic Analyzer
 
 The semantic analyzer ensures the logical and formal correctness of the automaton after parsing.
+
 **Responsibilities:**
 * Verify that the initial state exists
 * Verify that all final states are defined
 * Ensure transitions use existing states
 * Ensure transition symbols belong to the alphabet
 * Detect non-deterministic automata
+  
 **Semantic Rules Checked:**
 * The initial state must belong to the set of states
 * Final states must be defined states
