@@ -3,9 +3,9 @@
 ## Description
 This project implements a compiler for a finite automaton description language.
 The compiler is composed of three main phases:
-**Lexical Analysis** – tokenizing the input text
-**Syntax Analysis** – validating the grammar and structure
-**Semantic Analysis** – verifying the logical correctness of the automaton
+**Lexical Analysis** – tokenizing the input text,
+**Syntax Analysis** – validating the grammar and structure,
+**Semantic Analysis** – verifying the logical correctness of the automaton.
 The goal of the project is to ensure that an automaton described by the user is syntactically correct, semantically valid, and formally consistent.
 
 ---
