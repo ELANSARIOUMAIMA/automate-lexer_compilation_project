@@ -30,7 +30,7 @@ MODE_LECTURE mode_courant = MODE_NORMAL;
 
 //------------------------------------------------------------------------------ 
 // FONCTION POUR AFFICHER LE NOM DU TOKEN(utile pour notre main)
-//------------------------------------------------------------------------------ 
+//----------------------------------------------------------------------------- 
 const char* afficherToken(CODES_LEX code) {
     switch (code) {
         case ETATS_TOKEN: return "ETATS_TOKEN";

@@ -11,7 +11,7 @@ int state_exists(Automate *a, char *state) {
 }
 
 int symbol_exists(Automate *a, char symbol) {
-    for (int i = 0; i < a->nb_symboles; i++) { // Changé nb_alphabet -> taille_alphabet
+    for (int i = 0; i < a->nb_symboles; i++) { // Changé nb_alphabet->taille_alphabet
         if (a->alphabet[i] == symbol)
             return 1;
     }

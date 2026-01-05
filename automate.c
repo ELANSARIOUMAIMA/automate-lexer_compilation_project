@@ -40,7 +40,7 @@ void afficher_automate(Automate* aut) {
     }
     
     printf("\n");
-    printf("________________ AUTOMATE PARSE ________________\n");
+    printf("_______________ AUTOMATE PARSE _______________\n");
     
     // Afficher les etats
     printf("ETATS (%d): ", aut->nb_etats);
@@ -63,7 +63,7 @@ void afficher_automate(Automate* aut) {
     printf("FINAUX (%d): ", aut->nb_etats_finaux);
     for (int i = 0; i < aut->nb_etats_finaux; i++) {
         printf("%s ", aut->etats_finaux[i]);
-    }
+    } 
     printf("\n\n");
     
     // Afficher les transitions

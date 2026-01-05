@@ -10,7 +10,7 @@
 // Parse un fichier d'automate et retourne la structure Automate remplie
 Automate* parser(const char* nomFichier);
 
-//------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 // FONCTIONS AUXILIAIRES (PRIVÉES - déclarées ici pour la modularité)
 //------------------------------------------------------------------------------
 void parse_etats(Automate* aut);

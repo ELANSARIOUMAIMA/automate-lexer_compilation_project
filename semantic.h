@@ -3,7 +3,7 @@
 
 #include "automate.h" // On utilise la définition unique de automate.h
 
-// --- SUPPRIMEZ LES BLOCS TYPEDEF STRUCT ICI ---
+// --- SUPPRIMEZ LES BLOCS TYPEDEF STRUCT ICI --
 
 // Gardez seulement les prototypes
 int state_exists(Automate *a, char *state);

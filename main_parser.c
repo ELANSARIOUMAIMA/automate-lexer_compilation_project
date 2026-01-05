@@ -12,6 +12,7 @@ int main() {
     // Parser le fichier
     Automate* aut = parser("automate.txt");
     
+    
     // Analyse Sémantique
     if (!check_semantic(aut)) {
         printf("Compilation arrêtée à cause d’erreurs sémantiques.\n");

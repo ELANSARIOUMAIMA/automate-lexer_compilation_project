@@ -11,6 +11,7 @@ The goal of the project is to ensure that an automaton described by the user is 
 
 ---
 
+
 ## Features
 
 ### Lexer Features
