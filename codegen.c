@@ -89,7 +89,7 @@ void generer_code(Automate* aut, const char* nom_fichier_sortie) {
     printf("Fichier de sortie : %s\n", nom_fichier_sortie);
     FILE* f = fopen(nom_fichier_sortie, "w");
     if (!f) {
-        printf("❌ ERREUR : Impossible de créer le fichier %s\n", nom_fichier_sortie);
+        printf("ERREUR : Impossible de créer le fichier %s\n", nom_fichier_sortie);
         return;
     }
     
@@ -99,6 +99,6 @@ void generer_code(Automate* aut, const char* nom_fichier_sortie) {
     
     fclose(f);
     
-    printf("✅ Code généré avec succès !\n");
+    printf("Code généré avec succès !\n");
     printf("====================================================\n\n");
 }
