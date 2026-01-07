@@ -11,4 +11,6 @@ Automate* determiniser(Automate* aut);
 
 void afficher_automate_algo(Automate* aut);
 
+int sauvegarder_automate(Automate* aut, const char* nom_fichier);
+
 #endif

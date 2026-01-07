@@ -8,7 +8,6 @@
 //==============================================================================
 
 int accepter_chaine(Automate* aut, const char* chaine) {
-    printf("\n═══════════════════════════════════════════════════\n");
     printf("Chaîne à tester : \"%s\"\n", chaine);
     printf("───────────────────────────────────────────────────\n");
     
@@ -243,4 +242,65 @@ void afficher_automate_algo(Automate* aut) {
                aut->transitions[i].destination);
     }
     printf("\n");
+}
+
+//==============================================================================
+// ALGORITHME 5 : SAUVEGARDE D'AUTOMATE
+//==============================================================================
+
+int sauvegarder_automate(Automate* aut, const char* nom_fichier) {
+    printf("\n═══════════════════════════════════════════════════\n");
+    printf("  SAUVEGARDE DE L'AUTOMATE\n");
+    printf("═══════════════════════════════════════════════════\n");
+    
+    FILE* f = fopen(nom_fichier, "w");
+    
+    if (!f) {
+        printf("ERREUR : Impossible de créer le fichier %s\n", nom_fichier);
+        printf("═══════════════════════════════════════════════════\n\n");
+        return 0;
+    }
+    
+    fprintf(f, "etats = ");
+    for (int i = 0; i < aut->nb_etats; i++) {
+        fprintf(f, "%s", aut->etats[i]);
+        if (i < aut->nb_etats - 1) {
+            fprintf(f, ", ");
+        }
+    }
+    fprintf(f, ";\n");
+    
+    fprintf(f, "alphabet = ");
+    for (int i = 0; i < aut->nb_symboles; i++) {
+        fprintf(f, "%c", aut->alphabet[i]);
+        if (i < aut->nb_symboles - 1) {
+            fprintf(f, ", ");
+        }
+    }
+    fprintf(f, ";\n");
+    
+    fprintf(f, "initial = %s;\n", aut->etat_initial);
+    
+    fprintf(f, "final = ");
+    for (int i = 0; i < aut->nb_etats_finaux; i++) {
+        fprintf(f, "%s", aut->etats_finaux[i]);
+        if (i < aut->nb_etats_finaux - 1) {
+            fprintf(f, ", ");
+        }
+    }
+    fprintf(f, ";\n");
+    
+    fprintf(f, "transitions {\n");
+    for (int i = 0; i < aut->nb_transitions; i++) {
+        Transition t = aut->transitions[i];
+        fprintf(f, "    %s -> %s : %c;\n", 
+                t.source, t.destination, t.symbole);
+    }
+    fprintf(f, "}\n");
+    
+    fclose(f);
+    
+    printf("Automate sauvegardé avec succès !\n");
+    
+    return 1;
 }
