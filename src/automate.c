@@ -1,10 +1,10 @@
-#include "automate.h"
+#include "../include/automate.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 //------------------------------------------------------------------------------
-// CReER UN AUTOMATE VIDE
+// CREER UN AUTOMATE VIDE
 //------------------------------------------------------------------------------
 Automate* creer_automate() {
     Automate* aut = (Automate*)malloc(sizeof(Automate));
@@ -22,7 +22,7 @@ Automate* creer_automate() {
 }
 
 //------------------------------------------------------------------------------
-// LIBeRER LA MeMOIRE
+// LIBERER LA MEMOIRE
 //------------------------------------------------------------------------------
 void liberer_automate(Automate* aut) {
     if (aut) {

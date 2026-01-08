@@ -1,4 +1,4 @@
-#include "lexer.h"
+#include "../include/lexer.h"
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
@@ -155,7 +155,7 @@ void lire_mot() {
 
 
 //------------------------------------------------------------------------------ 
-// FONCTION POUR LIRE LES SYMBOLES SPECIAUX  (= , ; { } -> :)
+// FONCTION POUR LIRE LES SYMBOLES SPECIAUX  ( = , ; { } -> : )
 //------------------------------------------------------------------------------ 
 void lire_special() {
     switch (car_cour) {

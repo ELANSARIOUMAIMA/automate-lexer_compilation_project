@@ -1,4 +1,4 @@
-#include "codegen.h"
+#include "../include/codegen.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -37,11 +37,11 @@ void generer_structure_automate(FILE* f, Automate* aut) {
     fprintf(f, "    .nb_symboles = %d,\n\n", aut->nb_symboles);
     
     // SECTION 3 : GÉNÉRATION DE L'ÉTAT INITIAL
-    fprintf(f, "    // État initial\n");
+    fprintf(f, "    // Etat initial\n");
     fprintf(f, "    .etat_initial = \"%s\",\n\n", aut->etat_initial);
     
     // SECTION 4 : GÉNÉRATION DES ÉTATS FINAUX
-    fprintf(f, "    // États finaux (acceptants)\n");
+    fprintf(f, "    // Etats finaux (acceptants)\n");
     fprintf(f, "    .etats_finaux = {");
     for (int i = 0; i < aut->nb_etats_finaux; i++) {
         fprintf(f, "\"%s\"", aut->etats_finaux[i]);
@@ -85,11 +85,11 @@ void generer_fonction_get(FILE* f) {
 // FONCTION PRINCIPALE : GÉNÉRATION COMPLÈTE DU FICHIER
 void generer_code(Automate* aut, const char* nom_fichier_sortie) {
     printf("\n");
-    printf("================ GÉNÉRATION DE CODE ================\n");
+    printf("================ GENERATION DE CODE ================\n");
     printf("Fichier de sortie : %s\n", nom_fichier_sortie);
     FILE* f = fopen(nom_fichier_sortie, "w");
     if (!f) {
-        printf("ERREUR : Impossible de créer le fichier %s\n", nom_fichier_sortie);
+        printf("ERREUR : Impossible de creer le fichier %s\n", nom_fichier_sortie);
         return;
     }
     
@@ -99,6 +99,6 @@ void generer_code(Automate* aut, const char* nom_fichier_sortie) {
     
     fclose(f);
     
-    printf("Code généré avec succès !\n");
-    printf("====================================================\n\n");
+    printf("Code genere avec succes !\n");
+    printf("=====================================================\n\n");
 }

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "semantic.h"
+#include "../include/semantic.h"
 
 int state_exists(Automate *a, char *state) {
     for (int i = 0; i < a->nb_etats; i++) {
@@ -11,7 +11,7 @@ int state_exists(Automate *a, char *state) {
 }
 
 int symbol_exists(Automate *a, char symbol) {
-    for (int i = 0; i < a->nb_symboles; i++) { // Changé nb_alphabet->taille_alphabet
+    for (int i = 0; i < a->nb_symboles; i++) {
         if (a->alphabet[i] == symbol)
             return 1;
     }
@@ -19,17 +19,17 @@ int symbol_exists(Automate *a, char symbol) {
 }
 
 int check_initial_state(Automate *a) {
-    if (!state_exists(a, a->etat_initial)) { // Changé initial -> etat_initial
-        printf("Erreur sémantique : état initial '%s' non défini\n", a->etat_initial);
+    if (!state_exists(a, a->etat_initial)) {
+        printf("Erreur semantique : etat initial '%s' non defini\n", a->etat_initial);
         return 0;
     }
     return 1;
 }
 
 int check_final_states(Automate *a) {
-    for (int i = 0; i < a->nb_etats_finaux; i++) { // Changé nb_final -> nb_etats_finaux
-        if (!state_exists(a, a->etats_finaux[i])) { // Changé finals -> etats_finaux
-            printf("Erreur sémantique : état final '%s' non défini\n", a->etats_finaux[i]);
+    for (int i = 0; i < a->nb_etats_finaux; i++) {
+        if (!state_exists(a, a->etats_finaux[i])) {
+            printf("Erreur semantique : etat final '%s' non defini\n", a->etats_finaux[i]);
             return 0;
         }
     }
@@ -40,18 +40,18 @@ int check_transitions(Automate *a) {
     for (int i = 0; i < a->nb_transitions; i++) {
         Transition t = a->transitions[i];
 
-        if (!state_exists(a, t.source)) { // Changé from -> etat_source
-            printf("Erreur sémantique : état source '%s' inconnu\n", t.source);
+        if (!state_exists(a, t.source)) { 
+            printf("Erreur semantique : etat source '%s' inconnu\n", t.source);
             return 0;
         }
 
-        if (!state_exists(a, t.destination)) { // Changé to -> etat_dest
-            printf("Erreur sémantique : état destination '%s' inconnu\n", t.destination);
+        if (!state_exists(a, t.destination)) { 
+            printf("Erreur semantique : etat destination '%s' inconnu\n", t.destination);
             return 0;
         }
 
-        if (!symbol_exists(a, t.symbole)) { // Changé symbol -> symbole
-            printf("Erreur sémantique : symbole '%c' non défini dans l'alphabet\n", t.symbole);
+        if (!symbol_exists(a, t.symbole)) { 
+            printf("Erreur semantique : symbole '%c' non defini dans l'alphabet\n", t.symbole);
             return 0;
         }
     }
@@ -64,7 +64,7 @@ int check_determinism(Automate *a) {
             if (strcmp(a->transitions[i].source, a->transitions[j].source) == 0 &&
                 a->transitions[i].symbole == a->transitions[j].symbole) {
 
-                printf("Avertissement : automate non déterministe détecté (état '%s', symbole '%c')\n",
+                printf("Avertissement : automate non deterministe detecte (etat '%s', symbole '%c')\n",
                        a->transitions[i].source,
                        a->transitions[i].symbole);
                 return 1;
@@ -75,6 +75,8 @@ int check_determinism(Automate *a) {
 }
 
 int check_semantic(Automate *a) {
+    printf("----------------- ANALYSE SEMANTIQUE -----------------\n");
+
     int valid = 1;
 
     valid &= check_initial_state(a);
@@ -83,7 +85,7 @@ int check_semantic(Automate *a) {
 
     if (valid) {
         check_determinism(a);
-        printf("Analyse sémantique réussie\n");
+        printf("Analyse semantique reussie\n");
     }
 
     return valid;

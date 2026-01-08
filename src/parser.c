@@ -1,6 +1,6 @@
-#include "parser.h"
-#include "lexer.h"
-#include "automate.h"
+#include "../include/parser.h"
+#include "../include/lexer.h"
+#include "../include/automate.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,7 +26,7 @@ void verif_sections() {
         printf("PARSING ECHOUE : Sections manquantes !\n");
         exit(1);
     }
-    printf("✅ Toutes les sections OK !\n");
+    printf("Toutes les sections presentes !\n");
 }
 
 //------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ void parse_etats(Automate* aut) {
         strcpy(aut->etats[aut->nb_etats], SYM_COUR.NOM);
         aut->nb_etats++;
         
-        printf(" - Etat ajoute: %s\n", SYM_COUR.NOM);
+        printf("    - Etat ajoute: %s\n", SYM_COUR.NOM);
         
         Sym_Suiv();
         
@@ -70,7 +70,7 @@ void parse_etats(Automate* aut) {
         erreur_syntaxe("Attendu ';' à la fin de la liste des etats");
     }
     
-    printf("   %d etats parses\n\n", aut->nb_etats);
+    printf("   %d etats parses\n", aut->nb_etats);
 }
 
 //------------------------------------------------------------------------------
@@ -91,7 +91,7 @@ void parse_alphabet(Automate* aut) {
         aut->alphabet[aut->nb_symboles] = SYM_COUR.NOM[0];
         aut->nb_symboles++;
         
-        printf("-Symbole ajoute: %c\n", SYM_COUR.NOM[0]);
+        printf("    -Symbole ajoute: %c\n", SYM_COUR.NOM[0]);
         
         Sym_Suiv();
         
@@ -110,7 +110,7 @@ void parse_alphabet(Automate* aut) {
         erreur_syntaxe("Attendu ';' à la fin de l'alphabet");
     }
     
-    printf("   %d symboles parses\n\n", aut->nb_symboles);
+    printf("   %d symboles parses\n", aut->nb_symboles);
 }
 
 //------------------------------------------------------------------------------
@@ -131,14 +131,14 @@ void parse_initial(Automate* aut) {
     }
     
     strcpy(aut->etat_initial, SYM_COUR.NOM);
-    printf("-Etat initial: %s\n", SYM_COUR.NOM);
+    printf("    -Etat initial: %s\n", SYM_COUR.NOM);
     
     Sym_Suiv();
     if (SYM_COUR.CODE != POINTVIRGULE_TOKEN) {
         erreur_syntaxe("Attendu ';' apres l'etat initial");
     }
     
-    printf("   Etat initial parse\n\n");
+    printf("   Etat initial parse\n");
 }
 
 //------------------------------------------------------------------------------
@@ -158,7 +158,7 @@ void parse_final(Automate* aut) {
         strcpy(aut->etats_finaux[aut->nb_etats_finaux], SYM_COUR.NOM);
         aut->nb_etats_finaux++;
         
-        printf("-Etat final ajoute: %s\n", SYM_COUR.NOM);
+        printf("    -Etat final ajoute: %s\n", SYM_COUR.NOM);
         
         Sym_Suiv();
         
@@ -177,7 +177,7 @@ void parse_final(Automate* aut) {
         erreur_syntaxe("Attendu ';' à la fin des etats finaux");
     }
     
-    printf("   %d etats finaux parses\n\n", aut->nb_etats_finaux);
+    printf("   %d etats finaux parses\n", aut->nb_etats_finaux);
 }
 
 //------------------------------------------------------------------------------
@@ -236,7 +236,7 @@ void parse_transitions(Automate* aut) {
             aut->transitions[aut->nb_transitions] = t;
             aut->nb_transitions++;
             
-            printf("-Transition: %s --%c--> %s\n", etat_src, SYM_COUR.NOM[0], etat_dest);
+            printf("    -Transition: %s --%c--> %s\n", etat_src, SYM_COUR.NOM[0], etat_dest);
             
             Sym_Suiv();
             
@@ -263,14 +263,14 @@ void parse_transitions(Automate* aut) {
         erreur_syntaxe("Attendu '}' à la fin du bloc transitions");
     }
     
-    printf(" %d transitions parsees\n\n", aut->nb_transitions);
+    printf(" %d transitions parsees\n", aut->nb_transitions);
 }
 
 //------------------------------------------------------------------------------
 // FONCTION PRINCIPALE DU PARSER
 //------------------------------------------------------------------------------
 Automate* parser(const char* nomFichier) {
-    printf("---------------- DEBUT DU PARSING ----------------\n");
+    printf("----------------- DEBUT DU PARSING -----------------\n");
     
     // Initialiser le lexer
     Init_Lexer(nomFichier);
@@ -316,8 +316,8 @@ Automate* parser(const char* nomFichier) {
         Sym_Suiv();  // passer au token suivant
     }
     
-    printf("---------------- PARSING TERMINE ---------------- \n");
     verif_sections();
+    printf("PARSING TERMINE\n");
     
     return aut;
 }
